@@ -44,7 +44,7 @@ def augment_data(images, steerings):
 
 
 from keras.models import Sequential
-from keras.layers import Flatten, Dense, Lambda
+from keras.layers import Flatten, Dense, Lambda, Cropping2D
 from keras.layers.convolutional import Convolution2D
 from keras.layers.pooling import MaxPooling2D
 from keras.callbacks import ModelCheckpoint, EarlyStopping
@@ -60,6 +60,23 @@ def model_LeNet():
     model.add(Flatten())
     model.add(Dense(128))
     model.add(Dense(84))
+    model.add(Dense(1))
+
+    return model
+
+def model_nvidia():
+    model = Sequential()
+    model.add(Lambda(lambda x : (x / 255.0) - 0.5, input_shape=(160,320,3)))
+    model.add(Cropping2D(cropping=((70,25), (0,0))))
+    model.add(Convolution2D(24, (5, 5), subsample=(2,2), activation='relu'))
+    model.add(Convolution2D(36, (5, 5), subsample=(2,2), activation='relu'))
+    model.add(Convolution2D(48, (5, 5), subsample=(2,2), activation='relu'))
+    model.add(Convolution2D(64, (3, 3), activation='relu'))
+    model.add(Convolution2D(64, (3, 3), activation='relu'))
+    model.add(Flatten())
+    model.add(Dense(100))
+    model.add(Dense(50))
+    model.add(Dense(10))
     model.add(Dense(1))
 
     return model
@@ -84,12 +101,12 @@ if __name__ == '__main__':
     # Hyper parameters
     epochs = 5
     batch_size = 128
-    model = model_LeNet()
+    model = model_nvidia()
 
     model.compile(loss='mse', optimizer='adam')
-    checkpoint = ModelCheckpoint("model.h5", monitor='val_mean_squared_error', verbose=1,
+    checkpoint = ModelCheckpoint("model.h5", monitor='val_loss', verbose=1,
                                       save_best_only=True, mode='min')
-    early_stop = EarlyStopping(monitor='val_mean_squared_error', min_delta=0.0001, patience=4,
+    early_stop = EarlyStopping(monitor='val_loss', min_delta=0.0001, patience=4,
                                     verbose=1, mode='min')
     model.fit(X_train, y_train, validation_split=0.2, shuffle=True, epochs=5)
     model.fit(X_train, y_train, batch_size=batch_size, epochs=epochs, verbose=1,

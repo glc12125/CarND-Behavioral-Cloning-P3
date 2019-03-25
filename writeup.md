@@ -125,7 +125,7 @@ The car completed the first track, but there it passed over the "dashed" line on
 
 The final model architecture is shown in the following image:
 
-![final model architecture](writeup_images/network structure.png)
+![final model architecture](writeup_images/network_structure.png)
 
 #### 3. Creation of the Training Set & Training Process
 

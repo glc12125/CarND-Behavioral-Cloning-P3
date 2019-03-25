@@ -173,6 +173,8 @@ All these data was used for training the model with 10 epochs. The data was shuf
 
 ![traning mse error](writeup_images/training_loss.png)
 
+As can be seen from the above chart, starting from 7th epoch, the model is kind off overfitting. So the best stopping point is 7th epoch.
+
 After this training, the car was driving down the road all the time on the [first](video.mp4) and [second](video2.mp4) track. You can view a higher resolution of the two recordings from the two links below:
 
 <a href="http://www.youtube.com/watch?feature=player_embedded&v=-WaWYfsJiFU

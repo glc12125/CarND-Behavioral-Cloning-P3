@@ -112,7 +112,7 @@ For details about how I created the training data using more data augmentation t
 
 #### 1. Solution Design Approach
 
-Firstly, I tried the LeNet](http://yann.lecun.com/exdb/lenet/) model with 5 epochs with the training data provided by Udacity. A standard Lambda normalization layer was added at the beginning of the LeNet model, but the car can only make it to the first bridge. I increased the dataset by using left, and right images as well as flipping all of them. This allows the car to move a bit further, but it didn't get to the end. At that point, there was good amount of data, so I decided to try another more complex model.
+Firstly, I tried the [LeNet](http://yann.lecun.com/exdb/lenet/) model with 5 epochs with the training data provided by Udacity. A standard Lambda normalization layer was added at the beginning of the LeNet model, but the car can only make it to the first bridge. I increased the dataset by using left, and right images as well as flipping all of them. This allows the car to move a bit further, but it didn't get to the end. At that point, there was good amount of data, so I decided to try another more complex model.
 
 The model I chose next was: [nVidia Autonomous Car Group](https://devblogs.nvidia.com/parallelforall/deep-learning-self-driving-cars/). And it was also the final model I used to complete both tracks. I have made two modifications to the model:
 

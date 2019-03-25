@@ -173,4 +173,14 @@ All these data was used for training the model with 10 epochs. The data was shuf
 
 ![traning mse error](writeup_images/training_loss.png)
 
-After this training, the car was driving down the road all the time on the [first](video.mp4) and [second](video2.mp4) track. The full dataset can be downloaded [here](https://drive.google.com/open?id=1ushKB4MwrA0dPLQ9ix-UXmGLnZQU1-Yr). You can download and extract it to the root folder of this project.
+After this training, the car was driving down the road all the time on the [first](video.mp4) and [second](video2.mp4) track. You can view a higher resolution of the two recordings from the two links below:
+
+<a href="http://www.youtube.com/watch?feature=player_embedded&v=-WaWYfsJiFU
+" target="_blank"><img src="http://img.youtube.com/vi/-WaWYfsJiFU/0.jpg" 
+alt="first track recording" width="240" height="180" border="10" /></a>
+
+<a href="http://www.youtube.com/watch?feature=player_embedded&v=URmpa5A-sog
+" target="_blank"><img src="http://img.youtube.com/vi/URmpa5A-sog/0.jpg" 
+alt="first track recording" width="240" height="180" border="10" /></a>
+
+The full dataset can be downloaded [here](https://drive.google.com/open?id=1ushKB4MwrA0dPLQ9ix-UXmGLnZQU1-Yr). You can download and extract it to the root folder of this project.

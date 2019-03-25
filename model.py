@@ -84,7 +84,7 @@ def random_shadow(image, strength=0.50):
         if np.random.randint(2)==1:
             image_hls[:,:,1][cond1] = image_hls[:,:,1][cond1]*random_bright
         else:
-            image_hls[:,:,1][cond0] = image_hls[:,:,1][cond0]*random_bright    
+            image_hls[:,:,1][cond0] = image_hls[:,:,1][cond0]*random_bright
     image = cv2.cvtColor(image_hls,cv2.COLOR_HLS2RGB)
     return image
 
@@ -169,7 +169,7 @@ class threadsafe_iter:
 
     def __iter__(self):
         return self
-    
+
     def __next__(self):
         with self.lock:
             return self.it.__next__()
@@ -204,20 +204,13 @@ if __name__ == '__main__':
     lines.extend(read_csv(csv_file_name))
     print("Finished loading csv file")
 
-    print("Preprocessing images ...")
-    '''
-    images, steerings = preprocess_data(lines)
-    images, steerings = augment_data(images, steerings)
-    X_train = np.array(images)
-    y_train = np.array(steerings)
-    '''
     # This should be adjusted according to memory size
     batch_size = 64
-    
+
     train_samples, validation_samples = train_test_split(lines, test_size=0.2)
     train_generator = generator(train_samples, batch_size=batch_size)
     validation_generator = generator(validation_samples, batch_size=batch_size)
-    
+
     print("Finished Preprocessing images")
     # Hyper parameters
     epochs_num = 10
@@ -229,16 +222,14 @@ if __name__ == '__main__':
                                       save_best_only=True, mode='min')
     early_stop = EarlyStopping(monitor='val_loss', min_delta=0.0001, patience=4,
                                     verbose=1, mode='min')
-    #model.fit(X_train, y_train, batch_size=batch_size, epochs=epochs, verbose=1,
-    #                      callbacks=[checkpoint, early_stop], validation_split=0.2, shuffle=True)
-    
+
     history_object = model.fit_generator(train_generator,
             steps_per_epoch=ceil(len(train_samples)/batch_size),
             validation_data=validation_generator,
             validation_steps=ceil(len(validation_samples)/batch_size),
             callbacks=[checkpoint, early_stop],
             nb_epoch=epochs_num, verbose=1)
-    
+
     # Plot the training and validation loss for each epoch
     print('Generating loss chart...')
     plt.plot(history_object.history['loss'])

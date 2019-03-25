@@ -13,7 +13,7 @@ The goals/steps of this project are the following:
 
 ## Rubric points
 
-Here I will consider the [rubric points](https://review.udacity.com/#!/rubrics/1968/view) individually and describe how I addressed each point in my implementation.
+Here I will consider the [rubric points](https://review.udacity.com/#!/rubrics/1968/view) individually and describe how I addressed each point in my implementation. The github repo for this work is [here](https://github.com/glc12125/CarND-Behavioral-Cloning-P3).
 
 ### Files Submitted & Code Quality
 
